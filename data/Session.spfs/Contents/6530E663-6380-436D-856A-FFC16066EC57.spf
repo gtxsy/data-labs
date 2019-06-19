@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>publications</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>9210404883114613650</string>
+			<key>name</key>
+			<string>DEFAULT</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8mb4</string>
+			<key>contentFilterV2</key>
+			<dict>
+				<key>children</key>
+				<array/>
+				<key>filterClass</key>
+				<string>groupNode</string>
+				<key>isConjunction</key>
+				<true/>
+			</dict>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVk
+			QXJjaGl2ZXLRJidUZGF0YYABAAgAEQAaACMALQAyADcAQABGAE0A
+			VQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMAtQC3ALwAxwDQ
+			ANsA3gDpAPIA9wEEAQcBGQEcASEAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortCol</key>
+			<string>profit</string>
+			<key>contentSortColIsAsc</key>
+			<false/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1094, 646}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>DROP TABLE publications.most_profiting_authors;
+
+CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit FLOAT);
+
+DROP TABLE publications.total_royalty_by_author;
+
+CREATE TEMPORARY TABLE publications.total_royalty_by_author
+SELECT au_id, SUM(TotalRoyalty) AS "Total Royalty by Author"
+FROM publications.total_royalty
+GROUP BY au_id;
+
+SELECT * FROM publications.total_royalty_by_author;
+
+INSERT INTO publications.most_profiting_authors
+SELECT *
+FROM publications.total_royalty_by_author;</string>
+			<key>table</key>
+			<string>most_profiting_authors</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>214</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>DROP TABLE publications.most_profiting_authors;
+CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit FLOAT);
+DROP TABLE publications.total_royalty_by_author;
+CREATE TEMPORARY TABLE publications.total_royalty_by_author
+SELECT au_id, SUM(TotalRoyalty) AS "Total Royalty by Author"
+FROM publications.total_royalty
+GROUP BY au_id;
+SELECT * FROM publications.total_royalty_by_author;
+INSERT INTO publications.most_profiting_authors
+SELECT *
+FROM publications.total_royalty_by_author</string>
+		<string>INSERT INTO publications.most_profiting_authors
+SELECT *
+FROM publications.total_royalty_by_author</string>
+		<string>SELECT *
+INSERT INTO publications.most_profiting_authors
+FROM publications.total_royalty_by_author</string>
+		<string>SELECT *
+INTO publications.most_profiting_authors
+FROM publications.total_royalty_by_author</string>
+		<string>SELECT *
+INTO most_profiting_authors
+FROM total_royalty_by_author</string>
+		<string>SELECT * FROM publications.total_royalty_by_author</string>
+		<string>SLECT * FROM publications.total_royalty_by_author</string>
+		<string>CREATE TEMPORARY TABLE publications.total_royalty_by_author
+SELECT au_id, SUM(TotalRoyalty) AS "Total Royalty by Author"
+FROM publications.total_royalty
+GROUP BY au_id</string>
+		<string>DROP TABLE publications.total_royalty_by_author</string>
+		<string>CREATE TEMPORARY TABLE publications.total_royalty_by_author
+SELECT au_id, SUM(TotalRoyalty) AS "Total Royalty by Author"
+FROM publications.total_royalty
+GROUP BY au_id;
+SELECT *
+INTO publications.most_profiting_authors
+FROM publications.total_royalty_by_author</string>
+		<string>SELECT *
+INTO publications.most_profiting_authors
+FROM (SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
+FROM (
+	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
+	FROM (
+		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
+		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
+		INNER JOIN sales AS s ON t.title_id = s.title_id
+	) totalroyalty
+	GROUP BY au_id, title_id
+) totalRoyaltyByAuthor
+GROUP BY au_id
+ORDER BY TotalRoyaltybyAuthor DESC
+LIMIT 3) temp</string>
+		<string>SELECT *
+INTO most_profiting_authors
+FROM (SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
+FROM (
+	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
+	FROM (
+		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
+		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
+		INNER JOIN sales AS s ON t.title_id = s.title_id
+	) totalroyalty
+	GROUP BY au_id, title_id
+) totalRoyaltyByAuthor
+GROUP BY au_id
+ORDER BY TotalRoyaltybyAuthor DESC
+LIMIT 3) temp</string>
+		<string>SELECT *
+INTO most_profiting_author
+FROM (SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
+FROM (
+	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
+	FROM (
+		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
+		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
+		INNER JOIN sales AS s ON t.title_id = s.title_id
+	) totalroyalty
+	GROUP BY au_id, title_id
+) totalRoyaltyByAuthor
+GROUP BY au_id
+ORDER BY TotalRoyaltybyAuthor DESC
+LIMIT 3) temp</string>
+		<string>CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit INT(16))</string>
+		<string>CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit INT(16)</string>
+		<string>CREATE TABLE IF NOT EXISTS most_profiting_authors(au_id, profit)</string>
+		<string>CREATE TABLE most_profiting_authors(au_id, profit)</string>
+		<string>CREATE TABLE most_profiting_authors (au_id, profit)</string>
+		<string>CREATE TABLE most_profiting_authors</string>
+		<string>SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
+FROM (
+	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
+	FROM (
+		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
+		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
+		INNER JOIN sales AS s ON t.title_id = s.title_id
+	) totalroyalty
+	GROUP BY au_id, title_id
+) totalRoyaltyByAuthor
+GROUP BY au_id
+ORDER BY TotalRoyaltybyAuthor DESC
+LIMIT 3</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>8.0.15</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
