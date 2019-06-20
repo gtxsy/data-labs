@@ -20,7 +20,7 @@
 	<array>
 		<dict>
 			<key>frame</key>
-			<string>{{0, 82}, {1307, 772}}</string>
+			<string>{{21, 94}, {1307, 772}}</string>
 			<key>selectedTabIndex</key>
 			<integer>0</integer>
 			<key>tabs</key>
@@ -29,7 +29,7 @@
 					<key>isAbsolutePath</key>
 					<false/>
 					<key>path</key>
-					<string>6530E663-6380-436D-856A-FFC16066EC57.spf</string>
+					<string>F0F7A917-8C78-4E57-AD9E-E35E0D6E56C0.spf</string>
 				</dict>
 			</array>
 		</dict>

@@ -68,33 +68,62 @@
 			ANsA3gDpAPIA9wEEAQcBGQEcASEAAAAAAAACAQAAAAAAAAAoAAAA
 			AAAAAAAAAAAAAAABIw==
 			</data>
-			<key>contentSortCol</key>
-			<string>profit</string>
 			<key>contentSortColIsAsc</key>
-			<false/>
+			<true/>
 			<key>contentViewport</key>
 			<string>{{0, 0}, {1094, 646}}</string>
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
-			<string>DROP TABLE publications.most_profiting_authors;
+			<string>CREATE TABLE publications.store_sales_summary
+SELECT stores.stor_id AS StoreID, stores.stor_name AS Store, COUNT(DISTINCT(ord_num)) AS Orders, COUNT(title_id) AS Items, SUM(qty) AS Qty
+FROM publications.sales sales
+INNER JOIN publications.stores stores ON stores.stor_id = sales.stor_id
+GROUP BY StoreID, Store;
 
-CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit FLOAT);
-
-DROP TABLE publications.total_royalty_by_author;
-
-CREATE TEMPORARY TABLE publications.total_royalty_by_author
-SELECT au_id, SUM(TotalRoyalty) AS "Total Royalty by Author"
-FROM publications.total_royalty
-GROUP BY au_id;
-
-SELECT * FROM publications.total_royalty_by_author;
-
-INSERT INTO publications.most_profiting_authors
 SELECT *
-FROM publications.total_royalty_by_author;</string>
+FROM publications.store_sales_summary;
+
+DELETE FROM publications.store_sales_summary
+WHERE Qty &lt; 80;
+
+SELECT *
+FROM publications.store_sales_summary;
+
+DELETE FROM publications.store_sales_summary;
+
+SELECT *
+FROM publications.store_sales_summary;
+
+INSERT INTO publications.store_sales_summary
+SELECT stores.stor_id AS StoreID, stores.stor_name AS Store, COUNT(DISTINCT(ord_num)) AS Orders, COUNT(title_id) AS Items, SUM(qty) AS Qty
+FROM publications.sales sales
+INNER JOIN publications.stores stores ON stores.stor_id = sales.stor_id
+GROUP BY StoreID, Store;
+
+SELECT *
+FROM publications.store_sales_summary;
+
+UPDATE publications.store_sales_summary
+SET Qty = Qty + 5;
+
+SELECT *
+FROM publications.store_sales_summary;
+
+UPDATE publications.store_sales_summary
+SET Qty = Qty + 5;
+
+SELECT *
+FROM publications.store_sales_summary;
+
+UPDATE publications.store_sales_summary
+SET Qty = Qty + 10
+WHERE Qty &lt; 100;
+
+SELECT *
+FROM publications.store_sales_summary;</string>
 			<key>table</key>
-			<string>most_profiting_authors</string>
+			<string>store_sales_summary</string>
 			<key>view</key>
 			<string>SP_VIEW_CUSTOMQUERY</string>
 			<key>windowVerticalDividerPosition</key>
@@ -109,6 +138,42 @@ FROM publications.total_royalty_by_author;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>UPDATE publications.store_sales_summary
+SET Qty = Qty + 10
+WHERE Qty &lt; 100;
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>SELECT *
+FROM publications.store_sales_summary</string>
+		<string>UPDATE publications.store_sales_summary
+SET Qty = Qty + 10
+WHERE Qty &lt; 100
+
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>UPDATE publications.store_sales_summary
+SET Qty = Qty + 5;
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>INSERT INTO publications.store_sales_summary
+SELECT stores.stor_id AS StoreID, stores.stor_name AS Store, COUNT(DISTINCT(ord_num)) AS Orders, COUNT(title_id) AS Items, SUM(qty) AS Qty
+FROM publications.sales sales
+INNER JOIN publications.stores stores ON stores.stor_id = sales.stor_id
+GROUP BY StoreID, Store;
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>DELETE FROM publications.store_sales_summary;
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>DELETE FROM publications.store_sales_summary
+WHERE Qty &lt; 80;
+SELECT *
+FROM publications.store_sales_summary</string>
+		<string>CREATE TABLE publications.store_sales_summary
+SELECT stores.stor_id AS StoreID, stores.stor_name AS Store, COUNT(DISTINCT(ord_num)) AS Orders, COUNT(title_id) AS Items, SUM(qty) AS Qty
+FROM publications.sales sales
+INNER JOIN publications.stores stores ON stores.stor_id = sales.stor_id
+GROUP BY StoreID, Store</string>
 		<string>DROP TABLE publications.most_profiting_authors;
 CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit FLOAT);
 DROP TABLE publications.total_royalty_by_author;
@@ -176,40 +241,6 @@ FROM (
 GROUP BY au_id
 ORDER BY TotalRoyaltybyAuthor DESC
 LIMIT 3) temp</string>
-		<string>SELECT *
-INTO most_profiting_author
-FROM (SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
-FROM (
-	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
-	FROM (
-		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
-		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
-		INNER JOIN sales AS s ON t.title_id = s.title_id
-	) totalroyalty
-	GROUP BY au_id, title_id
-) totalRoyaltyByAuthor
-GROUP BY au_id
-ORDER BY TotalRoyaltybyAuthor DESC
-LIMIT 3) temp</string>
-		<string>CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit INT(16))</string>
-		<string>CREATE TABLE most_profiting_authors(au_id VARCHAR(16), profit INT(16)</string>
-		<string>CREATE TABLE IF NOT EXISTS most_profiting_authors(au_id, profit)</string>
-		<string>CREATE TABLE most_profiting_authors(au_id, profit)</string>
-		<string>CREATE TABLE most_profiting_authors (au_id, profit)</string>
-		<string>CREATE TABLE most_profiting_authors</string>
-		<string>SELECT au_id, SUM(TotalRoyalty) AS "TotalRoyaltybyAuthor"
-FROM (
-	SELECT title_id, au_id, SUM(Royalty) AS "TotalRoyalty"
-	FROM (
-		SELECT t.title_id, ta.au_id, title, (t.price * s.qty * t.royalty / 100 * ta.royaltyper / 100) AS "Royalty" FROM titles AS t
-		INNER JOIN titleauthor AS ta ON t.title_id = ta.title_id
-		INNER JOIN sales AS s ON t.title_id = s.title_id
-	) totalroyalty
-	GROUP BY au_id, title_id
-) totalRoyaltyByAuthor
-GROUP BY au_id
-ORDER BY TotalRoyaltybyAuthor DESC
-LIMIT 3</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
